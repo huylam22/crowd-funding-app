@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply font-primary text-base font-normal mx-auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    max-width: 1440px;
+  }
+  input {
+    @apply outline-none;
+  }
+  .balanced {
+    text-wrap: balance;
+  }
+}
+
+// Fix loi khi focus input bi de error message
+input:focus + .error-input {
+  display: none;
+}
+
+// Progession Line animation
+.progressVisualPart {
+  /* Number of the seconds for complete animation */
+  transition: width 2s;
+}
+
+.quill {
+  @apply border border-strock rounded-xl text-center;
+  padding: 15px 25px;
+  .ql-toolbar.ql-snow {
+    border: none;
+    @apply bg-text4 bg-opacity-10 rounded-xl py-3 px-5 inline-block;
+  }
+  .ql-container.ql-snow,
+  .ql-editor {
+    @apply border-none font-primary text-sm;
+  }
+  .ql-editor {
+    @apply pt-10;
+  }
+  .ql-editor.ql-blank::before {
+    @apply text-sm not-italic text-text4;
+  }
+}
+.gradient-banner {
+  background-image: linear-gradient(
+      179deg,
+      rgba(32, 18, 63, 0) -7.14%,
+      #000 87.01%
+    ),
+    url(https://cdn.dribbble.com/users/1050992/screenshots/2865870/media/5d65c41a9615b532bba01f6a766e61c5.jpg?resize=800x600&vertical=center);
+}
+.shadow-1 {
+  box-shadow: 4px 4px 8px 0px rgba(226, 226, 226, 0.2),
+    -4px 4px 8px 0px rgba(226, 226, 226, 0.2);
+}
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+.scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
