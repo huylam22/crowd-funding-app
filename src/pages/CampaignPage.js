@@ -1,10 +1,22 @@
 import { Button } from "components/button";
 import Heading from "components/common/Heading";
-import CampaginFeature from "modules/campaign/CampaignFeature";
+import CampaignFeature from "modules/campaign/CampaignFeature";
 import CampaignGrid from "modules/campaign/CampaignGrid";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const CampaignPage = () => {
+  const [searchParams] = useSearchParams(false);
+  const [hasSearch, setHasSearch] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.has("query")) {
+      const query = searchParams.get("query");
+      setHasSearch(true);
+      // performSearch(query); // Call the API with the query parameter
+    }
+  }, [searchParams]);
+
   return (
     <>
       <div className="flex items-center justify-between px-10 py-8 mb-10 bg-white rounded-3xl">
@@ -48,10 +60,16 @@ const CampaignPage = () => {
       </div>
       <Heading number={4}> Your Campaign</Heading>
       <CampaignGrid type="secondary">
-        <CampaginFeature></CampaginFeature>
-        <CampaginFeature></CampaginFeature>
-        <CampaginFeature></CampaginFeature>
-        <CampaginFeature></CampaginFeature>
+        {hasSearch ? (
+          <h3>co query truyen vao</h3>
+        ) : (
+          <>
+            <CampaignFeature></CampaignFeature>
+            <CampaignFeature></CampaignFeature>
+            <CampaignFeature></CampaignFeature>
+            <CampaignFeature></CampaignFeature>
+          </>
+        )}
         <div className="relative mt-10 text-center">
           <Button kind="ghost" className="px-8 mx-auto">
             See More+

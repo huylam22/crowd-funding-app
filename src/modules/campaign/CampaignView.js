@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CampImage from "./parts/CampImage";
 import CampCategory from "./parts/CampCategory";
 import CampTitle from "./parts/CampTitle";
@@ -12,8 +12,12 @@ import CampaignPerk from "./CampaignPerk";
 import Gap from "components/common/Gap";
 import CampaignGrid from "./CampaignGrid";
 import CampaignItem from "./CampaignItem";
+import ModalBackThisProject from "components/modal/ModalBackThisProject";
+import useToggleValue from "hooks/useToggleValue";
 
 const CampaignView = () => {
+  const { value: modalIsOpen, handleToggleValue: handleToggleModal } =
+    useToggleValue();
   return (
     <>
       <div className="h-[140px] rounded-3xl bg-cover bg-no-repeat bg-center bg-opacity-40 flex items-center justify-center text-white font-bold text-[40px] mb-10 gradient-banner">
@@ -61,7 +65,10 @@ const CampaignView = () => {
             <CampMeta size="big"></CampMeta>
             <CampMeta size="big"></CampMeta>
           </div>
-          <Button className="w-full text-white bg-primary">
+          <Button
+            className="w-full text-white bg-primary"
+            onClick={handleToggleModal}
+          >
             Back this project
           </Button>
         </div>
@@ -70,7 +77,13 @@ const CampaignView = () => {
         <div className="flex items-center text-sm font-medium gap-x-14 text-text3">
           <span className="cursor-pointer text-secondary">Campaign</span>
         </div>
-        <Button className="text-white bg-primary">Back this project</Button>
+        <Button onClick={handleToggleModal} className="text-white bg-primary">
+          Back this project
+        </Button>
+        <ModalBackThisProject
+          onClick={handleToggleModal}
+          modalIsOpen={modalIsOpen}
+        ></ModalBackThisProject>
       </div>
       <div className="grid gap-x-[124px] grid-cols-[1.3fr,1fr] mb-[70px]">
         <div className="text-lg font-semibold bg-white">

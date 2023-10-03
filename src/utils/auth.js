@@ -30,3 +30,19 @@ export const getToken = () => {
   const refresh_token = Cookies.get(refreshTokenKey);
   return { access_token, refresh_token };
 };
+
+export const logOut = () => {
+  const access_token = Cookies.get(accessTokenKey);
+  if (access_token) {
+    Cookies.remove(accessTokenKey, {
+      ...objectCookies,
+      path: "/",
+      domain: process.env.COOKIE_DOMAIN,
+    });
+    Cookies.remove(refreshTokenKey, {
+      ...objectCookies,
+      path: "/",
+      domain: process.env.COOKIE_DOMAIN,
+    });
+  }
+};

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import Checkbox from "components/checkbox/Checkbox";
+import { Checkbox } from "components/checkbox";
 import FormGroup from "components/common/FormGroup";
 import LayoutAuthentication from "../layout/LayoutAuthentication";
 import React from "react";
@@ -39,7 +39,7 @@ const SignUpPage = () => {
   const handleSignUp = async (values) => {
     console.log("values", values);
     try {
-      dispatch(authRegister(values));
+      dispatch(authRegister({ ...values, permissions: [] }));
       reset({});
     } catch (error) {
       console.log(error);

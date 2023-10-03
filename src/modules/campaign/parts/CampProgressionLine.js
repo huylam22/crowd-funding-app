@@ -37,8 +37,6 @@ const CampProgressionLine = ({
         className={`h-[5px] rounded-full flex my-6 w-full mx-0 bg-[${backgroundColor}]`}
       >
         {visualParts.map((item, index) => {
-          console.log(item.percentage);
-
           return (
             <div
               key={index}

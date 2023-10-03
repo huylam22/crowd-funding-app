@@ -8,7 +8,7 @@ const ImageUpload = ({ onChange = () => {}, name = "" }) => {
     const file = e.target.files;
     if (!file) return;
     const bodyFormData = new FormData();
-    bodyFormData.append("image", file[0]);
+    bodyFormData.append("image", file);
     const response = await axios({
       method: "post",
       url: `${imgbbAPI}0d5467503381552181426932e9e1587a`,
@@ -32,7 +32,12 @@ const ImageUpload = ({ onChange = () => {}, name = "" }) => {
   };
   return (
     <label className="w-full h-[200px] border border-gray-200 border-dashed rounded-xl cursor-pointer flex items-center justify-center">
-      <input type="file" onChange={handleUploadImage} className="hidden" />
+      <input
+        type="file"
+        onChange={handleUploadImage}
+        className="hidden"
+        multiple
+      />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="w-6 h-6"

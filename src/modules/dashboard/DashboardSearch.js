@@ -1,19 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconX } from "components/icons";
 import { defaultImage } from "constants/global";
+import { useNavigate } from "react-router-dom";
 const DashboardSearch = () => {
   const [showSearch, setShowSearch] = useState(false);
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const handleChange = (e) => {
+    setShowSearch(true);
+    setQuery(e.target.value);
+  };
+  const handleClick = () => {
+    navigate(`/campaign?query=${query}`);
+    setShowSearch(false);
+  };
+
   return (
     <div className="relative z-50">
       <div className="bg-white rounded-full shadow-[10px_10px_20px_0px_rgba(218,_213,_213,_0.15)] p-2 w-full flex items-center ">
         <div className="flex-1 px-5">
           <input
+            onChange={handleChange}
             type="text"
             placeholder="Do fundraise now"
             className="w-full text-sm bg-transparent placeholder:text-text4 text-text1"
           />
         </div>
-        <button className="w-[72px] rounded-full bg-primary text-white h-10 flex items-center justify-center flex-shrink-0">
+        <button
+          onClick={handleClick}
+          className="w-[72px] rounded-full bg-primary text-white h-10 flex items-center justify-center flex-shrink-0"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

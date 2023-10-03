@@ -5,12 +5,22 @@ import CampTitle from "./parts/CampTitle";
 import CampDesc from "./parts/CampDesc";
 import CampMeta from "./parts/CampMeta";
 import CampProgressionLine from "./parts/CampProgressionLine";
+import { useNavigate } from "react-router-dom";
 
-const CampaginFeature = () => {
+const CampaignFeature = ({ id }) => {
+  const navigate = useNavigate();
+
+  const handleClickNavigate = () => {
+    navigate(`/campaign/${id}`);
+    window.scrollTo(0, 0);
+  };
   return (
-    <div className="flex items-center gap-x-[30px] w-full max-w-[1048px]">
-      <CampImage className="h-[266px] flex-1"></CampImage>
-      <div className="flex-1 max-w-[435px]">
+    <div
+      className="flex lg:flex-row flex-col items-center gap-x-[30px] lg:w-full max-w-[1048px] cursor-pointer hover:shadow-md hover:rounded-2xl"
+      onClick={handleClickNavigate}
+    >
+      <CampImage className="lg:h-[266px] object-cover h-[210px] w-full mb-4 lg:flex-1"></CampImage>
+      <div className="lg:flex-1 lg:max-w-[435px]">
         <CampCategory
           text="Architecture"
           className="mb-4 text-sm"
@@ -41,4 +51,4 @@ const CampaginFeature = () => {
   );
 };
 
-export default CampaginFeature;
+export default CampaignFeature;

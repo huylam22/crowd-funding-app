@@ -32,8 +32,8 @@ const SignInPage = () => {
     mode: "onSubmit",
   });
   const dispatch = useDispatch();
+
   const handleSignIn = (values) => {
-    console.log("values", values);
     dispatch(authLogin(values));
   };
 
